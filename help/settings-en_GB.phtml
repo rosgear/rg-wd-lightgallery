@@ -18,70 +18,187 @@
     <p>The сustomizing widget form can be called from <a href="<?= $url('index', 'extension:rg.be.config.desk') ?>">Configuration panel</a> or from <a href="<?= $url('index', 'extension:rg.be.mp.wmanager') ?>">Widgets manager</a>.</p>
     <h2>Form tabs</h2>
     <h3>Form tab "LightGallery parameters"</h3>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua и 
-    has the following fields:</p>
+    <p>This tab is used to configure the main parameters of the LightGallery widget. Settings are adjusted via a set of fields, each of which controls a specific aspect of the gallery’s behavior and appearance—such as animations, navigation, buttons, content types, and more.</p>
     <ul class="g-help-list">
-        <li><b>Image title from alt and title tags.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Support for legacy browsers.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Allow media overlap.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Image caption from alt or title tags.</b><br> This option enables or disables the automatic retrieval of an image caption from the <code>alt</code> or <code>title</code> attributes of the original HTML tag.<br>
+        When enabled, the text from these attributes will appear below the photo (or within an overlay) in the gallery—a convenient way to provide context (such as a title, author, or date) without having to manually duplicate captions.<br>
+        If this option is disabled, captions will either not be displayed at all or will be pulled from a separate configuration field.<br>
+        Keep in mind that the <code>alt</code> attribute is primarily intended for accessibility; if it contains a long description, it may appear overly bulky when used as a caption. In such cases, it is better to explicitly provide a shorter caption within the gallery settings.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Support for legacy browsers.</b><br> This option enables or disables additional processing and polyfills to ensure LightGallery functions correctly in older browsers (such as Internet Explorer or earlier versions of Edge).<br>
+        When enabled, the library includes supplementary scripts and utilizes simpler, highly compatible solutions for animations, positioning, and event handling—helping to prevent errors or gallery malfunctions in outdated environments.<br>
+        However, this support increases the codebase size and may slightly slow down page loading in modern browsers.<br> If your target audience uses only up-to-date browsers, it is best to keep this option disabled to ensure the gallery remains lightweight and fast.<br> Enable it only if you have a confirmed user base that actually relies on older browsers. browsers.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Allow media overlapping.</b><br>This flag enables or disables the ability for media content (images, videos) to overlap within the LightGallery—for instance, during zooming, slideshows, or in modes with an expanded preview.<br>
+        When enabled, individual elements may partially overlap their neighbors, creating a denser and more striking visual effect; this is well-suited for art galleries, portfolios, or creative layouts.<br>
+        If this flag is disabled, the system strictly enforces spacing and prevents blocks from overlapping—resulting in a cleaner, more predictable interface where navigation remains intuitive.<br>
+        Please note that when overlapping is enabled, captions, buttons, and control elements may end up positioned beneath the content; be sure to verify readability across different screens and adjust the placement of titles or spacing as needed.</li>
     </ul>
 
-    <h4>Set of fields "Animation" contains:</h4>
+    <h4>Set of fields "Animation"</h4>
+    <p>Gallery animation parameters are defined by the following fields:</p>
     <ul class="g-help-list">
-        <li><b>CSS Easing property for animation.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>First slide.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Delay for hiding gallery controls, ms.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Transition duration, ms.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Zoom from image animation duration, ms.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Backdrop transition duration, ms.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Delay slide transitions, ms.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Enable slideEnd animation.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Hide scrollbar when gallery is opened.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_combo"></span> <b>CSS animation easing property.</b><br> This parameter sets the easing curve for animations in the LightGallery gallery; it determines how the speed of transitions between slides or the appearance of elements changes over time.<br>
+        Available options:
+            <ul>
+                <li><b>Ease</b> — standard easing: the animation begins and ends gently, with a slightly faster pace in the middle (suitable for most use cases);</li>
+                <li><b>Ease in</b> — a smooth start with gradual acceleration (useful for accents, when you want to draw attention to the beginning of the movement);</li>
+                <li><b>Ease out</b> — a fast start followed by a smooth deceleration toward the end (ideal for ensuring the final position appears crisp and stable);</li>
+                <li><b>Ease in out</b> — a gentle start and a gentle finish (the most balanced option for smooth, "premium-feel" transitions);</li>
+                <li><b>Linear</b> — uniform motion with no acceleration or deceleration (appears mechanical and distinct; appropriate for rhythmic or minimalist designs).</li>
+            </ul>
+        </li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>First slide.</b><br>This parameter determines which slide the LightGallery gallery will open on when launched.<br>
+        By default, the gallery starts with the first item, but you can specify any other index—for example, if you want to highlight a specific key image or allow a user to resume viewing from where they previously left off.<br>
+        The number must correspond to an existing position within the gallery; if you provide a value greater than the total number of slides or less than 1, the system will automatically adjust it to the nearest valid index. </li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>Control hiding delay (ms).</b><br> This parameter defines the delay—in milliseconds—after the user's last action before the gallery controls (navigation buttons, arrows, toolbar) are automatically hidden.<br>
+        For instance, with a value of 3000 ms, the panels will disappear after 3 seconds of inactivity—this ensures the interface doesn't obstruct the content while remaining accessible whenever needed.<br>
+        Setting the delay too low (e.g., 500–1000 ms) may cause the panels to flicker constantly, which can be distracting; if it is set too high (more than 5000–8000 ms), the interface remains on the screen for longer, partially obscuring the image.<br>
+        Moving the cursor or touching the screen makes the panels reappear, allowing the user to switch slides or close the gallery.</li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>Transition duration (ms)</b><br>This parameter determines the duration (in milliseconds) of the animation used when switching slides or other elements within the LightGallery.<br>
+        For example, a value of 300 ms results in a quick, concise transition, while 600–800 ms creates a smoother, more noticeable effect.<br>
+        Short transitions are appropriate when navigation speed and minimalism are priorities; longer transitions are better if you want to emphasize the change between frames and give the viewing experience a more cinematic feel.<br>
+        However, excessively long animations (over 1000 ms) can become tiresome and hinder interaction, as the user may be forced to wait for the effect to finish before they can move on to the next slide.</li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>Image zoom animation duration (ms)</b><br> This parameter defines the duration, in milliseconds, of the zoom animation for images within the LightGallery gallery.<br>
+        For example, a value of 200 ms results in a fast, almost imperceptible effect, while 400–600 ms creates a smooth, more pronounced transition.<br>
+        A short duration is appropriate when interaction speed and conciseness are priorities: the user sees the enlarged image immediately, without any distracting effects.<br>
+        A longer animation gives the zoom a "cinematic" feel and helps the eye track the change in scale—which is particularly useful for detailed imagery, such as textures, works of art, or macro photography.<br>
+        Conversely, excessively long transitions (exceeding 800–1000 ms) can be frustrating and slow down the viewing experience, forcing the user to wait for the animation to finish rather than focusing on the enlarged content.<br>
+        The optimal range is typically 300–500 ms: this provides a sense of smoothness while maintaining a responsive feel. Duration works in conjunction with the easing type—together, they define the overall character of the zoom movement.</li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>Background transition duration (ms).</b><br> This parameter determines the duration (in milliseconds) of the background animation (dimming/brightening) when opening or closing the LightGallery.<br>
+        For example, a value of 200 ms results in a quick, concise effect, while 400–600 ms creates a smoother, softer transition.<br>
+        A short transition is appropriate when content display speed and a minimalist UX are priorities, allowing the user to focus on the image immediately.<br>
+        A longer animation gives the appearance and disappearance of the gallery a "cinematic" feel and reduces the abruptness of state changes—this is particularly useful when the background is high-contrast or the gallery opens over a visually dense layout.<br>
+        However, excessively long transitions (over 800–1000 ms) can create a sense of lag and hinder quick browsing, as the user is forced to wait for the background to fully appear or fade away.<br>
+        The optimal range is typically 300–500 ms: enough to make the transition feel natural without distracting from the content.<br>
+        Duration works in conjunction with the easing type—together, they define the overall character of the background animation.</li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>Slide transition delay (ms).</b><br> This parameter specifies the time (in milliseconds) before an automatic slide change occurs in the LightGallery when enabled. ...auto-scrolling.<br>
+        For example, with a value of 3000 ms, the next slide will appear 3 seconds after the current one—usually enough time for a user to take in the photo.<br>
+        If the delay is set too short (e.g., 1000–1500 ms), the slides will flash by too quickly, making them difficult to view; if it is set too long (more than 6000–8000 ms), the viewing experience becomes drawn-out, and the gallery loses its dynamic feel.<br>
+        The optimal range is typically 3000–5000 ms: this allows for comfortable viewing without the impression that the gallery is "stuck" on a single frame.<br>
+        The delay only applies when auto-scrolling is enabled; it does not affect the gallery's behavior when a user navigates manually (via arrows, swiping, or clicking).<br>
+        Furthermore, when a user interacts with the gallery, auto-scrolling is generally reset or paused—ensuring the visitor remains in control of the interface.</li>
+        <li><b><span class="g-help-fld g-help-fld_checkbox"></span> Enable animation for the last slide.</b><br> This option enables or disables animation playback when the final slide in a LightGallery gallery is displayed.<br>
+        When enabled, the animation (such as a fade-in, zoom, or overlay effect) will also be applied to the last frame—this is useful for maintaining a consistent visual style throughout the gallery or highlighting a key image.<br>
+        If disabled, the last slide may appear without any animation; it simply "snaps" into place. While this can sometimes look a bit abrupt, it saves system resources and speeds up display. This setting is most commonly used in galleries with a large number of items or on lower-end devices to avoid unnecessary processing.<br>
+        Note that disabling animation for the last slide does not affect the ability to navigate backward—the gallery remains fully functional.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Hide the scrollbar when the gallery is opened.</b><br> This option enables or disables the hiding of the page's vertical scrollbar when a LightGallery gallery is opened.<br>
+        When enabled, the scrollbar disappears, which reduces visual clutter and helps the user focus entirely on the gallery content. Furthermore, this prevents the entire page from being scrolled accidentally while navigating through the slides.<br>
+        If this option is disabled, the scrollbar remains visible; this can be useful if there is important content further down the page that a user might want to access quickly without closing the gallery.<br>
+        Keep in mind that even when the scrollbar is hidden, the page remains scrollable—the scrollbar itself is simply not displayed; once the gallery is closed, the page returns to its original state.<br>
+        In some browsers and on mobile devices, this behavior may vary slightly due to differences in how the interface is rendered.</li>
     </ul>
 
-    <h4>Set of fields "Video" contains:</h4>
+    <h4>Set of fields "Video"</h4>
+    <p>Video display settings in the gallery are defined by the following fields:</p>
     <ul class="g-help-list">
-        <li><b>Automatically download poster image for YouTube videos.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Video max size.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Automatically load the poster image for YouTube videos.</b><br> This option enables or disables the automatic loading of a poster image (cover) for YouTube videos.<br>
+        When enabled, LightGallery automatically fetches a standard thumbnail from YouTube (such as `maxresdefault.jpg` or `hqdefault.jpg`) and displays it as a preview before the video starts. This allows the user to see a frame from the video immediately, rather than an empty player or a placeholder.<br>
+        This enhances the gallery experience and helps users identify the content more quickly. If this flag is disabled, the poster image will not load automatically. In this case, you can either specify a custom image via a separate parameter or use the first frame of the video (provided such logic is implemented in your project).<br>
+        Please note that automatic loading depends on the availability of the YouTube API and network conditions; in rare instances, the poster may fail to display, so it is advisable to have a fallback option.<br>
+        Additionally, if there are many videos in the gallery, automatic poster loading will slightly increase total data usage and the time required for the initial page render.</li>
+        <li><span class="g-help-fld g-help-fld_spinner"></span> <b>Maximum video size.</b><br>This parameter defines the maximum dimensions for videos in the LightGallery, specified as width-height (e.g., 1280-720).<br>
+        This constraint helps control the display size of the video: if the source video exceeds these dimensions, the gallery will automatically scale it down to the specified maximum while maintaining its aspect ratio.<br>
+        This prevents the player from taking up too much screen space or extending beyond its container—which is particularly important for mobile devices and narrow layout blocks.<br>
+        If this parameter is left blank or not set, LightGallery will apply its own adaptive rules to adjust the size based on the viewport.<br>
+        When choosing the dimensions, consider the video's aspect ratio; for example, 1920-1080 or 1280-720 are well-suited for the standard 16:9 format, while for vertical videos, you should select values ​​that align with a 9:16 ratio.</li>
     </ul>
 
-    <h4>Set of fields "Control" contains:</h4>
+    <h4>Set of fields "Control"</h4>
+    <p>Gallery control parameters are defined by the following fields:</p>
     <ul class="g-help-list">
-        <li><b>Enable keyboard navigation.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Enabled key «Esc».</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Enable swipe.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Enable drag.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Close on tap.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Reset scroll position.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Enable mouse wheel.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Enable keyboard navigation.</b><br> This option enables or disables keyboard-based control of the LightGallery gallery.<br>
+        When enabled, users can navigate between slides, close the gallery, and perform other actions using keyboard keys—for example, using the Left/Right arrow keys to move to the previous or next image, or the Esc key to close the gallery.<br>
+        This is convenient for those who prefer not to use a mouse and also improves interface accessibility—for instance, for individuals who may find using a touchpad or mouse difficult.<br>
+        If this option is disabled, keyboard commands will not work; navigation is then limited to on-screen buttons, swipes, or mouse clicks.<br>
+        Please note that when navigation is enabled, the gallery intercepts arrow key presses. If the gallery is opened in a modal window, this may affect page scrolling; normal page scrolling will resume once the gallery is closed.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Enable "Esc" key.</b><br> This option enables or disables the ability to close the LightGallery gallery by pressing the Esc key.<br>
+        When enabled, users can quickly exit the gallery without needing to locate the on-screen close button. This is a convenient and intuitive feature, as the Esc key is standard for canceling actions or exiting modal windows.<br>
+        If this option is disabled, the gallery can only be closed via an on-screen button, by clicking outside the content area, or through other available methods (depending on your specific settings).<br>
+        Please note that when this option is enabled, the Esc key press is intercepted. gallery: page scrolling or other actions bound to this key will only take effect once the gallery is closed.<br>
+        In most cases, it is best to keep this feature enabled, as it makes the interface more intuitive and accessible.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Enable swipe.</b><br>This setting enables or disables the ability to navigate through slides in the LightGallery gallery using a swipe gesture (swiping with a finger on mobile devices or using a trackpad on desktop).<br>
+        When enabled, users can move to the next or previous image with a simple gesture—this is the most natural way to navigate on phones and tablets.<br>
+        If this setting is disabled, slides can only be switched using control buttons, arrows, or keyboard commands (if enabled).<br>
+        Please note that enabling swipe may conflict with page scrolling: if the gallery is located within a scrollable container, it can sometimes be difficult to distinguish between a swipe gesture for the slides and scrolling the page itself.<br>
+        In most cases, it is best to keep this feature enabled, as it makes the interface convenient and familiar for mobile users.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Enable drag-and-drop.</b><br>This option enables or disables the ability to drag-and-drop slides in the LightGallery gallery using a mouse (on desktop) or a finger (on touch devices). This allows users to manually shift the current frame to better position an image or examine specific details.<br>
+        When enabled, the slide follows the cursor or touch point; once the user releases the mouse button or lifts their finger, the gallery either transitions to an adjacent slide or returns the current slide to its original position.<br>
+        This adds interactivity and helps users navigate the content more effectively, which is particularly useful for large images or those with intricate details.<br>
+        If this option is disabled, navigation is limited to buttons, swipe gestures (if enabled), or keyboard commands.<br>
+        Please note that enabling drag-and-drop may conflict with standard page scrolling on mobile devices, as it can sometimes be difficult to distinguish between a "scroll page" gesture and a "shift slide" gesture.<br>
+        In most cases, it is recommended to keep this feature enabled for desktop users, while on mobile devices, you should test its usability in conjunction with swipe gestures.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Close on click.</b><br>This option enables or disables the ability to close the LightGallery gallery by simply clicking on the area surrounding the slide—that is, on the darkened background or the "backdrop" outside the image itself.<br>
+        When enabled, a single click in the empty space around the image is enough to close the gallery. ...a familiar and quick way to exit the view, especially on desktop.<br>
+        If this flag is disabled, the gallery can only be closed via the close button (the "X" icon), the Esc key (if enabled), or other designated methods.<br>
+        Keep in mind that when this option is enabled, clicking the background will always trigger a "close" action—even if there is another interactive element on the page underneath; that element simply will not function while the gallery is open.<br>
+        In most cases, it is best to leave this feature enabled: it makes the interface intuitive and reduces the number of unnecessary actions for the user.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Reset scroll position.</b><br>This option enables or disables resetting the page's vertical scroll position when the LightGallery gallery is closed.<br>
+        When enabled, the page will automatically return to the very top (position 0) upon closing the gallery. This is useful if the gallery was opened from the middle of a long page, as it prevents the user from feeling "lost" further down the page and allows them to see the main content immediately.<br>
+        If this option is disabled, the scroll position is preserved; after closing the gallery, the user will remain exactly where they were before opening it.<br>
+        This is helpful when maintaining the viewing context is important—for example, in articles, landing pages, or catalogs—allowing the user to continue reading or interacting with the same section immediately.<br>
+        Please note that in some mobile browsers, an automatic scroll reset may cause a noticeable "jump" on the page; this is not an error, but rather the expected behavior. </li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Enable mouse wheel navigation.</b><br>This option enables or disables slide navigation in the LightGallery gallery using the mouse wheel.<br>
+        When enabled, scrolling the mouse wheel up or down will switch between slides: for example, scrolling forward moves to the next image, while scrolling backward moves to the previous one.<br>
+        This is convenient for users who prefer to navigate using their mouse, without relying on on-screen arrows or keyboard controls.<br>
+        If this option is disabled, the mouse wheel will function as usual—scrolling the page itself rather than the slides within the gallery.<br>
+        Please note that enabling this feature may conflict with page scrolling: if the gallery is opened in a modal window or within a scrollable container, users might accidentally cycle through slides instead of scrolling the page.<br>
+        In most cases, this feature is worth enabling for desktop users; however, it should be tested across different layouts—especially if the gallery does not occupy the full screen.</li>
     </ul>
 
-    <h4>Set of fields "Control interface" contains:</h4>
+    <h4>Set of fields "Control interface"</h4>
+    <p>The parameters for the gallery management interface are defined by the following fields:</p>
     <ul class="g-help-list">
-        <li><b>Allows to download.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Hide prev/next button.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Allows to close the gallery.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Show counter.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Show controls.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Show maximize icon.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Show close icon.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Loop.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Download option.</b><br>This flag enables or disables the download button for the current image (or video) in the LightGallery gallery.<br>
+        When enabled, a "Download" button appears next to the content, allowing the user to save the file to their device.<br>
+        If disabled, the download button is hidden, and users cannot download the file directly from the gallery.<br>
+        Please note that this feature only works in modern browsers and is subject to the server's CORS policies; if access to the file is restricted, the download may not work.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Hide "Previous/Next" buttons.</b><br>This flag toggles the visibility of the "Previous" and "Next" navigation buttons in the LightGallery gallery.<br>
+        When enabled, these buttons are removed from the interface, meaning users cannot use them to switch between slides.<br>
+        This is useful if you want to restrict navigation to other methods, such as swipe gestures, keyboard shortcuts, or a thumbnail grid.<br>
+        This approach is also commonly used for simple, single-image galleries to avoid cluttering the interface with unnecessary elements.<br>
+        If disabled, the buttons appear in their standard form—typically as arrows on either side of the slide.<br>
+        Keep in mind that hiding these buttons does not completely disable navigation; if other modes are enabled (such as swipe gestures, mouse wheel scrolling, or keyboard controls), users will still be able to navigate through the slides.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Allow closing the gallery.</b><br>This flag enables or disables the option to close the LightGallery gallery.<br>
+        When enabled, users can exit the gallery view—for example, by using the close button (an "X" icon), clicking on the background, pressing the Esc key, or performing a swipe gesture (depending on other active settings).<br>
+        If this flag is disabled, the gallery cannot be closed using standard methods; the usual buttons and gestures will not function.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Show counter.</b><br>This flag enables or disables the slide counter in the LightGallery—typically displayed as "1 of 5" or "Slide 1/5" at the top or bottom of the screen.<br>
+        When enabled, users can see which slide they are currently viewing and the total number of images in the gallery, helping them gauge the amount of content and how much remains to be seen.<br>
+        If this flag is disabled, the counter is hidden, resulting in a more minimalist interface—often a good choice for art galleries or instances where the focus should remain entirely on the image itself.<br>
+        Note that even without the counter, users can still navigate through the slides using arrows, swipe gestures, or other enabled navigation methods.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Show controls.</b><br>This flag enables or disables the display of the entire control panel in the LightGallery.<br>
+        When enabled, all standard navigation and action elements are visible—such as the "previous/next" arrows, the slide counter, and the close button. (an "X" icon), and sometimes additional buttons (for example, for zooming or full-screen mode).<br>
+        This makes the interface as clear as possible: users can immediately see that they can scroll through, close, or zoom in on images.<br>
+        If this flag is disabled, the control panel is hidden—the gallery becomes minimalist, and interaction relies on intuitive gestures (swiping, clicking the background) or custom elements that you have added separately.<br>
+        Keep in mind that hiding the panel does not disable the underlying functionality: if swipes, keyboard support, or other modes are enabled, navigation remains available.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Show full-screen button.</b><br>This option enables or disables the button used to switch to full-screen mode within the LightGallery gallery.<br>
+        When enabled, a button (typically featuring an "expand" icon) appears in the control panel; clicking it allows the user to view an image or video in full-screen mode—making it easier to examine details and fully immerse oneself in the content.<br>
+        If this option is disabled, the button is hidden, and switching to full-screen mode via the interface becomes unavailable (even if the library technically supports it).<br>
+        Please note that full-screen behavior differs on mobile devices: instead of a true full-screen mode, it may trigger the system’s native image viewer or an enlarged view within the gallery itself.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Show close button.</b><br>This option enables or disables the display of the close button for the LightGallery gallery—usually represented as an "X" in the corner of the screen.<br>
+        When enabled, a clear button is displayed, allowing the user to close the gallery with a single click.<br>
+        If this option is disabled, the button is hidden; however, the gallery can still be closed using other methods—such as pressing the Esc key (if enabled), clicking the background (if permitted), or using a swipe gesture (if configured).<br>
+        This approach is often used to create a more minimalist interface or to shift the focus toward alternative interaction methods.<br>
+        Keep in mind that removing the button does not eliminate the ability to close the gallery—it simply removes one of the visual triggers.</li>
+        <li><span class="g-help-fld g-help-fld_checkbox"></span> <b>Repeat.</b><br>This flag enables or disables the cyclic playback (repetition) of slides in a LightGallery gallery.<br>
+        When enabled, the gallery automatically switches from the last slide back to the first, allowing users to browse through the collection in a continuous loop without needing to manually return to the beginning.<br>
+        This is useful for slideshows, promotional content, or showcases with a limited set of images.<br>
+        If the flag is disabled, the gallery stops at the last slide; to view the first slide again, the user must navigate back manually (using arrows, a swipe gesture, etc.).</li>
     </ul>
 
-    <h4>Set of fields "Gallery size" contains:</h4>
+    <h4>Set of fields "Gallery size"</h4>
+    <p>Gallery dimensions are defined by the following fields:</p>
     <ul class="g-help-list">
-        <li><b>Width, px, %.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Height, px, %.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_text"></span> <b>Width (px, %).</b> This parameter sets a fixed width for the gallery in pixels (px) or as a percentage (%);</li>
+        <li><span class="g-help-fld g-help-fld_text"></span> <b>Height (px, %).</b> This parameter sets a fixed height for the gallery in pixels (px) or as a percentage (%).</li>
     </ul>
 
-    <h4>Set of fields "Iframe size" contains:</h4>
+    <h4>Set of fields "Iframe size"</h4>
     <ul class="g-help-list">
-        <li><b>Width, px, %.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Height, px, %.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Max width, px, %.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua;</li>
-        <li><b>Max height, px, %.</b> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</li>
+        <li><span class="g-help-fld g-help-fld_text"></span> <b>Width (px, %).</b> This parameter sets the width of the iframe in which the gallery is displayed, in pixels (px) or as a percentage (%);</li>
+        <li><span class="g-help-fld g-help-fld_text"></span> <b>Height (px, %).</b> This parameter sets the height of the iframe in which the gallery is displayed, in pixels (px) or as a percentage (%);</li>
+        <li><span class="g-help-fld g-help-fld_text"></span> <b>Max. width (px, %).</b> This parameter sets the maximum width of the iframe in which the gallery is displayed, in pixels (px) or as a percentage (%);</li>
+        <li><span class="g-help-fld g-help-fld_text"></span> <b>Max. height (px, %).</b> This parameter sets the maximum height of the iframe in which the gallery is displayed, in pixels (px) or as a percentage (%).</li>
     </ul>
 
     <h3>Form tab "Version"</h3>
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+    <p>This tab contains key legal and technical information regarding the LightGallery widget. It displays the current version of the library, which helps you understand which features and fixes are available and ensures compatibility with other scripts. The license type is also specified—this determines whether the widget can be used in commercial projects, whether the code can be modified or redistributed, and provides access to the license agreement.</p>
 </article>
